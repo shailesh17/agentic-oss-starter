@@ -1,7 +1,7 @@
 default:
   image:
     name: node:22
-    entrypoint: ['']
+    entrypoint: [""]
 
 stages:
   - build
