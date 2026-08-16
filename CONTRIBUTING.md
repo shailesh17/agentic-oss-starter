@@ -21,9 +21,9 @@ cd agentic-oss-starter
 # 2. Install dependencies
 pnpm install
 
-# 3. Install Trunk CLI (linters & formatters)
-curl https://get.trunk.io -fsSL | bash
-trunk init
+# 3. Format & Lint
+pnpm run format
+pnpm run check
 ```
 
 ---
@@ -54,19 +54,19 @@ We use GitHub's **Squash and Merge** strategy. Enforcing conventional commit for
 
 ### Allowed Types
 
-| Type | Description | Example |
-| :--- | :--- | :--- |
-| `feat` | A new feature or capability | `feat(api): add health check endpoint ✨` |
-| `fix` | A bug fix | `fix(transport): handle stream disconnect 🐛` |
-| `docs` | Documentation changes only | `docs(readme): add installation guide 📝` |
-| `style` | Formatting, missing semicolons, etc. | `style: format imports 🎨` |
-| `refactor` | Code restructuring without fixing a bug or adding a feature | `refactor: extract helper module ♻️` |
-| `perf` | Performance improvements | `perf: cache parsed AST tree 🚀` |
-| `test` | Adding or updating tests | `test: add unit tests 🧪` |
-| `build` | Build system or dependency updates | `build: update TypeScript compiler target 📦` |
-| `ci` | CI configuration files or scripts | `ci: add Node 24 to matrix test 👷` |
-| `chore` | Routine maintenance tasks | `chore: update dependencies 🔧` |
-| `revert` | Reverting a previous commit | `revert: undo experimental changes ⏪` |
+| Type       | Description                                                 | Example                                       |
+| :--------- | :---------------------------------------------------------- | :-------------------------------------------- |
+| `feat`     | A new feature or capability                                 | `feat(api): add health check endpoint ✨`     |
+| `fix`      | A bug fix                                                   | `fix(transport): handle stream disconnect 🐛` |
+| `docs`     | Documentation changes only                                  | `docs(readme): add installation guide 📝`     |
+| `style`    | Formatting, missing semicolons, etc.                        | `style: format imports 🎨`                    |
+| `refactor` | Code restructuring without fixing a bug or adding a feature | `refactor: extract helper module ♻️`          |
+| `perf`     | Performance improvements                                    | `perf: cache parsed AST tree 🚀`              |
+| `test`     | Adding or updating tests                                    | `test: add unit tests 🧪`                     |
+| `build`    | Build system or dependency updates                          | `build: update TypeScript compiler target 📦` |
+| `ci`       | CI configuration files or scripts                           | `ci: add Node 24 to matrix test 👷`           |
+| `chore`    | Routine maintenance tasks                                   | `chore: update dependencies 🔧`               |
+| `revert`   | Reverting a previous commit                                 | `revert: undo experimental changes ⏪`        |
 
 ---
 
@@ -76,6 +76,7 @@ We use GitHub's **Squash and Merge** strategy. Enforcing conventional commit for
 2. Make your changes and verify with `pnpm run build`, `pnpm run format`, and `pnpm run check`.
 3. Commit using Conventional Commits: `git commit -m "feat: implement my feature"`.
 4. Push and open PR with GitHub CLI:
+
    ```bash
    gh pr create --title "feat: implement my feature" --body-file .github/PULL_REQUEST_TEMPLATE.md
    ```

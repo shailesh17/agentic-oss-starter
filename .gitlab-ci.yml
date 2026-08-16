@@ -5,8 +5,8 @@ stages:
   - test
 
 variables:
-  PNPM_HOME: "/root/.local/share/pnpm"
-  PATH: "$PNPM_HOME:$PATH"
+  PNPM_HOME: /root/.local/share/pnpm
+  PATH: $PNPM_HOME:$PATH
 
 before_script:
   - corepack enable
