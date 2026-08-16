@@ -54,19 +54,19 @@ We use GitHub's **Squash and Merge** strategy. Enforcing conventional commit for
 
 ### Allowed Types
 
-| Type | Description | Example |
-| :--- | :--- | :--- |
-| `feat` | A new feature or capability | `feat(api): add health check endpoint ✨` |
-| `fix` | A bug fix | `fix(transport): handle stream disconnect 🐛` |
-| `docs` | Documentation changes only | `docs(readme): add installation guide 📝` |
-| `style` | Formatting, missing semicolons, etc. | `style: format imports 🎨` |
-| `refactor` | Code restructuring without fixing a bug or adding a feature | `refactor: extract helper module ♻️` |
-| `perf` | Performance improvements | `perf: cache parsed AST tree 🚀` |
-| `test` | Adding or updating tests | `test: add unit tests 🧪` |
-| `build` | Build system or dependency updates | `build: update TypeScript compiler target 📦` |
-| `ci` | CI configuration files or scripts | `ci: add Node 24 to matrix test 👷` |
-| `chore` | Routine maintenance tasks | `chore: update dependencies 🔧` |
-| `revert` | Reverting a previous commit | `revert: undo experimental changes ⏪` |
+| Type       | Description                                                 | Example                                       |
+| :--------- | :---------------------------------------------------------- | :-------------------------------------------- |
+| `feat`     | A new feature or capability                                 | `feat(api): add health check endpoint ✨`     |
+| `fix`      | A bug fix                                                   | `fix(transport): handle stream disconnect 🐛` |
+| `docs`     | Documentation changes only                                  | `docs(readme): add installation guide 📝`     |
+| `style`    | Formatting, missing semicolons, etc.                        | `style: format imports 🎨`                    |
+| `refactor` | Code restructuring without fixing a bug or adding a feature | `refactor: extract helper module ♻️`          |
+| `perf`     | Performance improvements                                    | `perf: cache parsed AST tree 🚀`              |
+| `test`     | Adding or updating tests                                    | `test: add unit tests 🧪`                     |
+| `build`    | Build system or dependency updates                          | `build: update TypeScript compiler target 📦` |
+| `ci`       | CI configuration files or scripts                           | `ci: add Node 24 to matrix test 👷`           |
+| `chore`    | Routine maintenance tasks                                   | `chore: update dependencies 🔧`               |
+| `revert`   | Reverting a previous commit                                 | `revert: undo experimental changes ⏪`        |
 
 ---
 
