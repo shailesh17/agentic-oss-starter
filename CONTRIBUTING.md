@@ -21,9 +21,9 @@ cd agentic-oss-starter
 # 2. Install dependencies
 pnpm install
 
-# 3. Install Trunk CLI (linters & formatters)
-curl https://get.trunk.io -fsSL | bash
-trunk init
+# 3. Format & Lint
+pnpm run format
+pnpm run check
 ```
 
 ---
@@ -76,6 +76,7 @@ We use GitHub's **Squash and Merge** strategy. Enforcing conventional commit for
 2. Make your changes and verify with `pnpm run build`, `pnpm run format`, and `pnpm run check`.
 3. Commit using Conventional Commits: `git commit -m "feat: implement my feature"`.
 4. Push and open PR with GitHub CLI:
+
    ```bash
    gh pr create --title "feat: implement my feature" --body-file .github/PULL_REQUEST_TEMPLATE.md
    ```
