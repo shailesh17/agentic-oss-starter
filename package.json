@@ -1,0 +1,42 @@
+{
+  "name": "agentic-oss-starter",
+  "version": "0.1.0",
+  "description": "Production-ready, opinionated GitHub template repository for 100% AI-native open-source development.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w",
+    "format": "trunk fmt",
+    "check": "trunk check"
+  },
+  "keywords": [
+    "ai-native",
+    "agentic-ai",
+    "github-template",
+    "starter-kit",
+    "developer-tools",
+    "trunk",
+    "commitlint"
+  ],
+  "author": "Shailesh Patel <shailesh17@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shailesh17/agentic-oss-starter.git"
+  },
+  "homepage": "https://github.com/shailesh17/agentic-oss-starter#readme",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@trunkio/launcher": "^1.3.4",
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  },
+  "packageManager": "pnpm@11.3.0"
+}
