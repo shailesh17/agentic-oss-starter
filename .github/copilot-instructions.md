@@ -1,7 +1,19 @@
-# GitHub Copilot & Cursor Instructions
+# Copilot & Cursor AI Guidelines for `agentic-oss-starter`
 
-- **Project Purpose**: `mcp-httpserver-proxy` is a Node.js TypeScript proxy that converts Model Context Protocol (MCP) HTTP/SSE connections to `stdio` for desktop clients like Claude Desktop and Cursor.
-- **Stdio Integrity Rule**: **Never use `console.log()` to standard output**. All logs and diagnostic output must go to `console.error()` (stderr) to prevent corrupting the JSON-RPC stdio transport.
-- **Package Manager**: Use `pnpm`.
-- **Formatting & Linting**: Use `trunk fmt` (`pnpm run format`) and `trunk check` (`pnpm run check`).
-- **Commit Messages**: Follow Conventional Commits format (`feat:`, `fix:`, `docs:`, `chore:`, etc.).
+This repository is an AI-native open-source monorepo template powered by **pnpm workspaces** and **local Nx task orchestration**.
+
+## Guidelines for AI Assistants
+
+1. **Workspace Structure**:
+   - Applications reside under `apps/` (e.g. `apps/web`, `apps/api`).
+   - Shared packages reside under `packages/` (e.g. `packages/shared`).
+   - Root `package.json` orchestrates tasks with `nx run-many` and `nx affected`.
+
+2. **Common Build Language**:
+   - When adding a new tier, ensure its `package.json` includes standard scripts: `"build"`, `"test"`, `"dev"`.
+
+3. **Coding Standards**:
+   - Strict TypeScript (`NodeNext` module resolution, ES2022 target).
+   - Node 22 native test runner (`node --test`).
+   - Formatting and linting managed by Trunk (`trunk fmt`, `trunk check`).
+   - Conventional Commits enforced on all commits and PRs.

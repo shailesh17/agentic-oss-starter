@@ -1,5 +1,9 @@
 node_modules/
 dist/
+apps/*/dist/
+packages/*/dist/
+.nx/
+.pnpm-store/
 *.log
 .DS_Store
 .env

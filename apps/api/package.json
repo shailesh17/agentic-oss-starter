@@ -1,0 +1,19 @@
+{
+  "name": "@agentic/api",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "node --test test/**/*.test.ts",
+    "dev": "tsc -w"
+  },
+  "dependencies": {
+    "@agentic/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}

@@ -18,57 +18,43 @@ All Pull Request titles and commit messages must follow the standard **Conventio
 
 ### Type Reference
 
-| Type       | Description                             | Example                                                |
-| :--------- | :-------------------------------------- | :----------------------------------------------------- |
-| `feat`     | New feature or capability               | `feat(cli): add interactive options and help flag ✨`  |
-| `fix`      | Bug fix or error resolution             | `fix(transport): prevent message drop during init 🐛`  |
-| `docs`     | Documentation changes                   | `docs(readme): add Cursor and VS Code setup guides 📝` |
-| `style`    | Formatting or styling adjustments       | `style: standardize TypeScript import order 🎨`        |
-| `refactor` | Code restructuring without logic change | `refactor(proxy): extract signal cleanup handlers ♻️`  |
-| `perf`     | Performance improvement                 | `perf(sse): optimize message serialization 🚀`         |
-| `test`     | Adding or updating tests                | `test: add mock SSE server end-to-end suite 🧪`        |
-| `build`    | Build system or dependency updates      | `build: update TypeScript target to ES2022 📦`         |
-| `ci`       | CI/CD workflow updates                  | `ci: add Node 24 matrix test and semantic PR check 👷` |
-| `chore`    | Tooling, configs, or maintenance        | `chore(trunk): track .trunk configs in Git 🔧`         |
-| `revert`   | Reverting a previous commit             | `revert: undo experimental stream buffer ⏪`           |
+| Type       | Description                             | Example                                             |
+| :--------- | :-------------------------------------- | :-------------------------------------------------- |
+| `feat`     | New feature or capability               | `feat(api): add health check endpoint`              |
+| `fix`      | Bug fix or error resolution             | `fix(shared): resolve type export mismatch`         |
+| `docs`     | Documentation changes                   | `docs(readme): add monorepo architecture guide`     |
+| `style`    | Formatting or styling adjustments       | `style: standardize TypeScript import order`        |
+| `refactor` | Code restructuring without logic change | `refactor(web): extract header component`           |
+| `perf`     | Performance improvement                 | `perf(nx): optimize build output caching`           |
+| `test`     | Adding or updating tests                | `test(api): add authentication mock tests`          |
+| `build`    | Build system or dependency updates      | `build: update TypeScript target to ES2022`         |
+| `ci`       | CI/CD workflow updates                  | `ci: add Node 24 matrix test and semantic PR check` |
+| `chore`    | Tooling, configs, or maintenance        | `chore(trunk): track .trunk configs in Git`         |
+| `revert`   | Reverting a previous commit             | `revert: undo experimental stream buffer`           |
 
 ---
 
 ## 🛠️ Step-by-Step Execution Workflow
 
-### Step 1: Pre-flight Verification & Stream Hygiene
+### Step 1: Pre-flight Verification & Tests
 
-Run all verification tools to ensure zero build errors, format violations, or lint issues:
+Run all verification tools to ensure zero build errors, format violations, test failures, or lint issues:
 
 ```bash
-# 1. Compile TypeScript
+# 1. Compile all workspace packages & apps
 pnpm run build
 
-# 2. Format code with Trunk
+# 2. Run all test suites
+pnpm test
+
+# 3. Format code with Trunk
 pnpm run format
 
-# 3. Lint and analyze workspace
+# 4. Lint and analyze workspace
 pnpm run check
 ```
 
-> [!IMPORTANT]
-> **Verify Stdout Isolation**: Ensure no `console.log()` calls exist in runtime proxy code (`src/index.ts`). All logging must be routed to `process.stderr` via `console.error()`.
-
-### Step 2: Testing Verification & Evidence Collection
-
-If transport, proxy, or server integration was modified, run the local mock SSE server and verify end-to-end:
-
-```bash
-# Start mock server in background
-node .agents/skills/mock-sse-server/scripts/mock-server.js
-
-# Test connection
-node dist/index.js http://127.0.0.1:8123/sse
-```
-
-Capture the execution logs to include in the PR description under **Testing Evidence**.
-
-### Step 3: Git Branch & Push
+### Step 2: Git Branch & Push
 
 1. Ensure changes are committed with Conventional Commit messages (`type(scope): description`).
 
@@ -90,59 +76,6 @@ Capture the execution logs to include in the PR description under **Testing Evid
    git push -u origin <branch-name>
    ```
 
-### Step 4: Create Pull Request with GitHub CLI (`gh`)
+### Step 3: Create Pull Request with GitHub CLI (`gh`)
 
-Use `gh pr create` with the Conventional Commit title and rich Markdown body adhering to the template below:
-
-````bash
-gh pr create \
-  --title "feat(cli): add interactive options and help flag" \
-  --body "$(cat <<'EOF'
-# Pull Request
-
-## 📋 Description & What Changed
-- Added `-h` / `--help` and `-v` / `--version` CLI flags.
-- Implemented `SIGINT` and `SIGTERM` signal handlers for graceful connection cleanup.
-- Configured executable `bin` field in `package.json`.
-
----
-
-## 💡 Motivation & Why
-Allows developers to run `mcp-httpserver-proxy` directly via `npx` with zero setup and ensures child processes terminate cleanly when the terminal session ends.
-
----
-
-## 🧪 How to Test
-1. Run `pnpm run build`.
-2. Run `node dist/index.js --help` and verify options display correctly.
-3. Run `node dist/index.js http://127.0.0.1:8123/sse` against the mock SSE server.
-
----
-
-## 🔍 Testing Evidence & Execution Logs
-```text
-$ pnpm run build
-$ trunk check
-Checked 24 modified files
-✔ No issues
-
-$ node dist/index.js http://127.0.0.1:8123/sse
-Proxy running. Connected to http://127.0.0.1:8123/sse
-```
-
----
-
-## 🤖 AI Agent & Model
-- **Agent / Tool**: Antigravity
-- **Model**: Gemini 3.7 Flash
-
----
-
-## 🛡️ Contributor Checklist
-- [x] PR Title follows Conventional Commits (`type(scope): description`).
-- [x] TypeScript builds cleanly with `pnpm run build`.
-- [x] Code is formatted with `pnpm run format` and passes `pnpm run check`.
-- [x] Zero `console.log()` calls to `stdout` (diagnostics use `console.error()`).
-EOF
-)"
-````
+Use `gh pr create` with the Conventional Commit title and rich Markdown body.

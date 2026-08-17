@@ -1,28 +1,59 @@
 # Agent Guidelines for `agentic-oss-starter`
 
-Welcome, AI agent! This document details the technical architecture, development workflows, strict constraints, coding standards, and Pull Request procedures for repositories built using this template.
+Welcome, AI agent! This document details the technical architecture, development workflows, strict constraints, coding standards, and Pull Request procedures for this repository.
 
 ---
 
 ## 🎯 Repository Overview
 
-This repository is built with **100% AI-native development standards**, optimized for seamless pair-programming with AI coding assistants (Antigravity, Cursor, Claude Code, GitHub Copilot, Gemini CLI).
+`agentic-oss-starter` is a production-ready, opinionated GitHub template repository for **100% AI-native open-source monorepo development**.
 
-The core runtime is TypeScript (ESM) managed with **pnpm**, formatted and linted with **Trunk**, and enforced with standard **Conventional Commits**.
+It is structured as a modern **pnpm + Nx multi-tier monorepo**:
+
+- `apps/*`: Application entrypoints (e.g. `apps/web` for frontend, `apps/api` for backend services).
+- `packages/*`: Reusable shared libraries, types, and utilities (e.g. `packages/shared`).
+- `nx.json`: Local Nx task graph orchestration (caching, dependency graph, affected tasks, zero cloud telemetry).
+- `pnpm-workspace.yaml`: Workspace definition and package dependency linking.
 
 ---
 
 ## ⚠️ Critical Constraints & Rules
 
-### 1. Package Management & Tooling
+### 1. Unified Common Task Language
 
-- Always use **`pnpm`** as the package manager (`pnpm install`, `pnpm run build`, `pnpm run format`, `pnpm run check`).
+All apps and packages implement standard scripts in their local `package.json`:
+
+- `build`: Compiles the project artifacts to `dist/`.
+- `test`: Executes native unit tests using `node --test`.
+- `dev`: Runs watch/development mode.
+
+Root scripts orchestrate tasks across all tiers using Nx:
+
+```bash
+# Build all packages & apps (respects dependency order ^build)
+pnpm run build
+
+# Run tests across all workspace packages
+pnpm test
+
+# Run dev watch mode
+pnpm run dev
+
+# Run only affected tasks based on git changes
+pnpm run affected:test
+pnpm run affected:build
+```
+
+### 2. Package Management & Tooling
+
+- Always use **`pnpm`** as the package manager (`pnpm install`, `pnpm run build`, `pnpm test`, `pnpm run format`, `pnpm run check`).
 - Never introduce `npm` or `yarn` lockfiles.
-- Standard formatting and linting is managed by **Trunk**:
+- Standard formatting and linting is managed locally by **Trunk**:
   - Format: `pnpm run format` (`trunk fmt`)
   - Lint/Check: `pnpm run check` (`trunk check`)
+- Nx is installed strictly as a local dev dependency in `package.json` with Nx Cloud disabled (`neverConnectToCloud: true`). Never install Nx globally.
 
-### 2. Git & Commit Standards
+### 3. Git & Commit Standards
 
 - All commit messages and PR titles must follow **Conventional Commits**:
   - Format: `<type>(<scope>): <description>`
@@ -36,17 +67,11 @@ The core runtime is TypeScript (ESM) managed with **pnpm**, formatted and linted
 
 When instructed to open a Pull Request, use the [create-pr skill](.agents/skills/create-pr/SKILL.md):
 
-1. **Pre-flight**: Run `pnpm run build`, `pnpm run format`, and `pnpm run check`. Ensure 0 errors.
+1. **Pre-flight**: Run `pnpm run build`, `pnpm test`, `pnpm run format`, and `pnpm run check`. Ensure 0 errors.
 2. **Branch & Push**: Create a feature branch and push to remote (`git push -u origin <branch>`).
 3. **Open PR via `gh pr create`**:
-   - **Title**: Conventional Commit (e.g. `feat(parser): add JSON streaming support`).
-   - **Body**: Rich Markdown format including:
-     - `📋 Description & What Changed`
-     - `💡 Motivation & Why`
-     - `🧪 How to Test`
-     - `🔍 Testing Evidence & Execution Logs`
-     - `🤖 AI Agent & Model`
-     - `🛡️ Contributor Checklist`
+   - **Title**: Conventional Commit (e.g. `feat(api): add health check endpoint`).
+   - **Body**: Rich Markdown format including Description, Motivation, How to Test, Testing Evidence, AI Model, and Checklist.
 
 ---
 
@@ -56,11 +81,11 @@ When instructed to open a Pull Request, use the [create-pr skill](.agents/skills
 # Install dependencies
 pnpm install
 
-# Compile TypeScript
+# Build all workspace packages
 pnpm run build
 
-# Development watch mode
-pnpm run dev
+# Run all test suites
+pnpm test
 
 # Format code
 pnpm run format
