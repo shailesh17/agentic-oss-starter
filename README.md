@@ -9,13 +9,22 @@
     <img src="https://github.com/shailesh17/agentic-oss-starter/actions/workflows/ci.yml/badge.svg" alt="CI Status" />
   </a>
   <a href="https://gitlab.com/shaileshpatel17/agentic-oss-starter/-/pipelines">
-    <img src="https://img.shields.io/badge/GitLab%20CI-passing-orange.svg?logo=gitlab" alt="GitLab CI Status" />
+    <img src="https://img.shields.io/badge/GitLab%20CI-passing-orange.svg?logo=gitlab&logoColor=white" alt="GitLab CI Status" />
+  </a>
+  <a href="https://claude.ai">
+    <img src="https://img.shields.io/badge/Claude-Code%20Ready-D97706.svg?logo=anthropic&logoColor=white" alt="Claude Code Ready" />
+  </a>
+  <a href="https://deepmind.google/technologies/gemini/">
+    <img src="https://img.shields.io/badge/Gemini-Supported-4285F4.svg?logo=google&logoColor=white" alt="Gemini Supported" />
+  </a>
+  <a href="https://github.com/features/copilot">
+    <img src="https://img.shields.io/badge/Copilot%20%26%20Cursor-Configured-00ADD8.svg?logo=githubcopilot&logoColor=white" alt="Copilot & Cursor Configured" />
   </a>
   <a href="https://github.com/shailesh17/agentic-oss-starter/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT" />
   </a>
   <a href="https://nodejs.org">
-    <img src="https://img.shields.io/badge/Node.js-%3E%3D22.13.0-brightgreen.svg" alt="Node.js Version" />
+    <img src="https://img.shields.io/badge/Node.js-%3E%3D22.13.0-brightgreen.svg?logo=nodedotjs&logoColor=white" alt="Node.js Version" />
   </a>
   <a href="https://python.org">
     <img src="https://img.shields.io/badge/Python-3.10+-3776AB.svg?logo=python&logoColor=white" alt="Python Version" />
@@ -24,16 +33,16 @@
     <img src="https://img.shields.io/badge/Go-1.22+-00ADD8.svg?logo=go&logoColor=white" alt="Go Version" />
   </a>
   <a href="https://pnpm.io">
-    <img src="https://img.shields.io/badge/pnpm-11.x-orange.svg" alt="pnpm" />
+    <img src="https://img.shields.io/badge/pnpm-11.x-orange.svg?logo=pnpm&logoColor=white" alt="pnpm" />
   </a>
   <a href="https://nx.dev">
-    <img src="https://img.shields.io/badge/Nx-Polyglot%20Monorepo-blue.svg" alt="Nx Monorepo" />
+    <img src="https://img.shields.io/badge/Nx-Polyglot%20Monorepo-143055.svg?logo=nx&logoColor=white" alt="Nx Monorepo" />
   </a>
   <a href="https://trunk.io">
-    <img src="https://img.shields.io/badge/Trunk-Checked-blueviolet.svg" alt="Trunk Check" />
+    <img src="https://img.shields.io/badge/Trunk-Checked-blueviolet.svg?logo=trunk&logoColor=white" alt="Trunk Check" />
   </a>
   <a href="https://www.conventionalcommits.org">
-    <img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg" alt="Conventional Commits" />
+    <img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?logo=conventionalcommits&logoColor=white" alt="Conventional Commits" />
   </a>
 </p>
 
@@ -145,6 +154,7 @@ agentic-oss-starter/
 ├── scripts/
 │   ├── setup-github-repo.sh    # One-command GitHub settings & branch ruleset setup
 │   └── mirror-to-gitlab.sh     # One-command GitLab mirror with GPG signature preservation
+├── CLAUDE.md                   # Anthropic Claude Code CLI memory & instructions
 ├── nx.json                     # Local Nx workspace task graph & cache config
 ├── pnpm-workspace.yaml         # Defines workspace package layout
 ├── package.json                # Root package.json with unified orchestration scripts
@@ -213,20 +223,20 @@ Adding a new language (e.g. Rust, Java, or C#) is as simple as adding a folder w
 
 ## 📦 Features & Capabilities
 
-| Feature                         | Description                                                                       | File / Tool                                                 |
-| :------------------------------ | :-------------------------------------------------------------------------------- | :---------------------------------------------------------- |
-| **🌐 Polyglot Support**         | First-class TypeScript, Python, and Go project scaffolding                        | `apps/*`, `packages/*`                                      |
-| **⚡ Local Nx Monorepo**        | Task caching, topological builds, and affected commands with zero cloud telemetry | `nx.json`, `pnpm-workspace.yaml`                            |
-| **🤖 AI Agent Guidelines**      | Comprehensive pairing rules, stdout stream hygiene, and prompt runbooks           | `AGENTS.md`, `GEMINI.md`, `.github/copilot-instructions.md` |
-| **⚡ AI PR Creation Skill**     | Automated rich Markdown PR generator with verification & checklist                | `.agents/skills/create-pr/SKILL.md`                         |
-| **🧪 Multi-Node Matrix CI**     | Automated builds & tests across Node 22.x & 24.x, Python 3.12, and Go 1.22        | `.github/workflows/ci.yml`                                  |
-| **📝 Semantic PR Validation**   | Enforces Conventional Commits specification on PR titles                          | `.github/workflows/semantic-pr.yml`                         |
-| **🏷️ Release Drafter**          | Automatically drafts release notes categorized by Conventional Commits            | `.github/workflows/release.yml`                             |
-| **🦊 GitLab CI/CD Pipeline**    | Dual-platform CI pipeline ready for GitLab mirroring with zero config             | `.gitlab-ci.yml`, `scripts/mirror-to-gitlab.sh`             |
-| **🔐 GPG Mirror Verification**  | Automatically signs mirrored commits with personal GPG keys on GitLab             | `scripts/mirror-to-gitlab.sh`                               |
-| **🛡️ Automated Repo Rules**     | One-command setup for squash merging, linear history, and branch rulesets         | `scripts/setup-github-repo.sh`                              |
-| **🧹 Zero Global Dependencies** | Trunk launcher, TypeScript, Nx, and Commitlint run locally via `node_modules`     | `.trunk/trunk.yaml`, `package.json`                         |
-| **🤖 Consolidated Dependabot**  | Groups weekly updates into unified PRs, preventing rebasing cascades              | `.github/dependabot.yml`                                    |
+| Feature                         | Description                                                                       | File / Tool                                                              |
+| :------------------------------ | :-------------------------------------------------------------------------------- | :----------------------------------------------------------------------- |
+| **🌐 Polyglot Support**         | First-class TypeScript, Python, and Go project scaffolding                        | `apps/*`, `packages/*`                                                   |
+| **⚡ Local Nx Monorepo**        | Task caching, topological builds, and affected commands with zero cloud telemetry | `nx.json`, `pnpm-workspace.yaml`                                         |
+| **🤖 AI Agent Guidelines**      | Comprehensive pairing rules, stdout stream hygiene, and prompt runbooks           | `AGENTS.md`, `GEMINI.md`, `CLAUDE.md`, `.github/copilot-instructions.md` |
+| **⚡ AI PR Creation Skill**     | Automated rich Markdown PR generator with verification & checklist                | `.agents/skills/create-pr/SKILL.md`                                      |
+| **🧪 Multi-Node Matrix CI**     | Automated builds & tests across Node 22.x & 24.x, Python 3.12, and Go 1.22        | `.github/workflows/ci.yml`                                               |
+| **📝 Semantic PR Validation**   | Enforces Conventional Commits specification on PR titles                          | `.github/workflows/semantic-pr.yml`                                      |
+| **🏷️ Release Drafter**          | Automatically drafts release notes categorized by Conventional Commits            | `.github/workflows/release.yml`                                          |
+| **🦊 GitLab CI/CD Pipeline**    | Dual-platform CI pipeline ready for GitLab mirroring with zero config             | `.gitlab-ci.yml`, `scripts/mirror-to-gitlab.sh`                          |
+| **🔐 GPG Mirror Verification**  | Automatically signs mirrored commits with personal GPG keys on GitLab             | `scripts/mirror-to-gitlab.sh`                                            |
+| **🛡️ Automated Repo Rules**     | One-command setup for squash merging, linear history, and branch rulesets         | `scripts/setup-github-repo.sh`                                           |
+| **🧹 Zero Global Dependencies** | Trunk launcher, TypeScript, Nx, and Commitlint run locally via `node_modules`     | `.trunk/trunk.yaml`, `package.json`                                      |
+| **🤖 Consolidated Dependabot**  | Groups weekly updates into unified PRs, preventing rebasing cascades              | `.github/dependabot.yml`                                                 |
 
 ---
 
@@ -236,8 +246,9 @@ This template is configured to instruct AI agents how to contribute safely and e
 
 ### 📚 Agent Configuration Files
 
-| File                                  | Target Agent / IDE         | Purpose                                                         |
+| File                                  | Target AI Tool / Platform  | Purpose                                                         |
 | :------------------------------------ | :------------------------- | :-------------------------------------------------------------- |
+| **`CLAUDE.md`**                       | Anthropic Claude Code CLI  | Session instructions, polyglot task commands, and rules.        |
 | **`AGENTS.md`**                       | All Coding Agents          | Monorepo architecture, polyglot task contract, and PR workflow. |
 | **`GEMINI.md`**                       | Antigravity / Gemini IDE   | Workspace instructions and automated PR standards.              |
 | **`.github/copilot-instructions.md`** | GitHub Copilot & Cursor    | Coding conventions, polyglot guidelines, and tooling commands.  |
@@ -249,7 +260,7 @@ Copy and paste this prompt when instructing your AI assistant:
 
 ```text
 Please implement [feature/fix description].
-1. Follow the polyglot monorepo guidelines in AGENTS.md.
+1. Follow the polyglot monorepo guidelines in AGENTS.md and CLAUDE.md.
 2. Verify with `pnpm run build`, `pnpm test`, `pnpm run format`, and `pnpm run check`.
 3. Open a Pull Request using the workflow in `.agents/skills/create-pr/SKILL.md`.
 ```
