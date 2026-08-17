@@ -1,22 +1,27 @@
 {
   "name": "agentic-oss-starter",
   "version": "0.1.0",
-  "description": "Production-ready, opinionated GitHub template repository for 100% AI-native open-source development.",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "private": true,
+  "description": "Production-ready, opinionated GitHub template repository for 100% AI-native open-source monorepo development with Nx.",
   "type": "module",
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc -w",
+    "build": "nx run-many -t build",
+    "test": "nx run-many -t test",
+    "lint": "trunk check",
+    "check": "trunk check",
+    "check:ci": "trunk check --ci",
     "format": "trunk fmt",
-    "check": "trunk check"
+    "dev": "nx run-many -t dev",
+    "affected:test": "nx affected -t test",
+    "affected:build": "nx affected -t build"
   },
   "keywords": [
     "ai-native",
     "agentic-ai",
     "github-template",
     "starter-kit",
+    "monorepo",
+    "nx",
     "developer-tools",
     "trunk",
     "commitlint"
@@ -36,6 +41,7 @@
     "@commitlint/config-conventional": "^19.6.0",
     "@trunkio/launcher": "^1.3.4",
     "@types/node": "^22.10.2",
+    "nx": "^20.4.0",
     "typescript": "^5.7.2"
   },
   "packageManager": "pnpm@11.3.0"

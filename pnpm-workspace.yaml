@@ -1,0 +1,10 @@
+packages:
+  - apps/*
+  - packages/*
+
+allowBuilds:
+  nx: true
+
+onlyBuiltDependencies:
+  - "@trunkio/launcher"
+  - nx

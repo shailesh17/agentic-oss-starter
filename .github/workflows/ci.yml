@@ -37,8 +37,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build TypeScript
+      - name: Build All Packages & Apps (Nx)
         run: pnpm run build
+
+      - name: Run All Tests (Nx)
+        run: pnpm test
 
   lint-and-format:
     name: Trunk Check & Lint

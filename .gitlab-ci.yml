@@ -23,9 +23,10 @@ build:
     - pnpm run build
   artifacts:
     paths:
-      - dist/
+      - apps/*/dist/
+      - packages/*/dist/
 
 test:
   stage: test
   script:
-    - pnpm run build
+    - pnpm test

@@ -16,6 +16,9 @@ MD036: false
 # MD026: Trailing punctuation in heading - allowed for questions in FAQ/Why sections
 MD026: false
 
+# MD031: Fenced code blocks surrounded by blank lines
+MD031: false
+
 # MD024: Multiple headings with same content
 MD024:
   siblings_only: true
