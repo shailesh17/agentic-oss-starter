@@ -1,0 +1,9 @@
+{
+  "name": "@agentic/gateway",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "go build -o dist/gateway main.go",
+    "test": "go test -v ./...",
+    "dev": "go run main.go"
+  }
+}

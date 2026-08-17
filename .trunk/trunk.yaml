@@ -23,6 +23,8 @@ lint:
         - dist/**
         - apps/*/dist/**
         - packages/*/dist/**
+        - "**/__pycache__/**"
+        - "**/*.pyc"
 actions:
   enabled:
     - trunk-announce

@@ -27,6 +27,8 @@ importers:
         specifier: ^5.7.2
         version: 5.9.3
 
+  apps/ai-service: {}
+
   apps/api:
     dependencies:
       '@agentic/shared':
@@ -39,6 +41,8 @@ importers:
       typescript:
         specifier: ^5.7.2
         version: 5.9.3
+
+  apps/gateway: {}
 
   apps/web:
     dependencies:
