@@ -1,19 +1,18 @@
 # Copilot & Cursor AI Guidelines for `agentic-oss-starter`
 
-This repository is an AI-native open-source monorepo template powered by **pnpm workspaces** and **local Nx task orchestration**.
+This repository is an AI-native open-source polyglot monorepo template powered by **pnpm workspaces** and **local Nx task orchestration**.
 
-## Guidelines for AI Assistants
+## Polyglot Workspace Structure
 
-1. **Workspace Structure**:
-   - Applications reside under `apps/` (e.g. `apps/web`, `apps/api`).
-   - Shared packages reside under `packages/` (e.g. `packages/shared`).
-   - Root `package.json` orchestrates tasks with `nx run-many` and `nx affected`.
+1. **Applications (`apps/`)**:
+   - `apps/web`: TypeScript Frontend Client
+   - `apps/api`: TypeScript Backend / API Gateway
+   - `apps/ai-service`: Python AI / Data / MCP Microservice (`pyproject.toml`)
+   - `apps/gateway`: Go High-Performance Microservice (`go.mod`)
 
-2. **Common Build Language**:
-   - When adding a new tier, ensure its `package.json` includes standard scripts: `"build"`, `"test"`, `"dev"`.
+2. **Shared Packages (`packages/`)**:
+   - `packages/shared`: Shared TypeScript Schemas, Interfaces, and Constants (`@agentic/shared`)
 
-3. **Coding Standards**:
-   - Strict TypeScript (`NodeNext` module resolution, ES2022 target).
-   - Node 22 native test runner (`node --test`).
-   - Formatting and linting managed by Trunk (`trunk fmt`, `trunk check`).
-   - Conventional Commits enforced on all commits and PRs.
+3. **Common Build Language**:
+   - Every tier specifies standard scripts: `"build"`, `"test"`, `"dev"`.
+   - Root `package.json` coordinates all tiers with `nx run-many` and `nx affected`.

@@ -4,6 +4,9 @@ apps/*/dist/
 packages/*/dist/
 .nx/
 .pnpm-store/
+__pycache__/
+*/__pycache__/
+*.pyc
 *.log
 .DS_Store
 .env

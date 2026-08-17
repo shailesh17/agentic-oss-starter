@@ -6,34 +6,37 @@ Welcome, AI agent! This document details the technical architecture, development
 
 ## 🎯 Repository Overview
 
-`agentic-oss-starter` is a production-ready, opinionated GitHub template repository for **100% AI-native open-source monorepo development**.
+`agentic-oss-starter` is a production-ready, opinionated GitHub template repository for **100% AI-native open-source polyglot monorepo development**.
 
-It is structured as a modern **pnpm + Nx multi-tier monorepo**:
+It is structured as a modern **pnpm + Nx multi-tier, multi-language monorepo**:
 
-- `apps/*`: Application entrypoints (e.g. `apps/web` for frontend, `apps/api` for backend services).
-- `packages/*`: Reusable shared libraries, types, and utilities (e.g. `packages/shared`).
-- `nx.json`: Local Nx task graph orchestration (caching, dependency graph, affected tasks, zero cloud telemetry).
-- `pnpm-workspace.yaml`: Workspace definition and package dependency linking.
+- **`apps/web`** (TypeScript): Frontend application client.
+- **`apps/api`** (TypeScript): Backend service / API gateway.
+- **`apps/ai-service`** (Python): AI agent, data processing, and prompt engineering microservice (`pyproject.toml`).
+- **`apps/gateway`** (Go): High-performance proxy and networking microservice (`go.mod`).
+- **`packages/shared`** (TypeScript): Shared contracts, interfaces, and utilities (`@agentic/shared`).
+- **`nx.json`**: Local Nx task graph orchestration (caching, dependency graph, affected tasks, zero cloud telemetry).
+- **`pnpm-workspace.yaml`**: Workspace definition and package dependency linking.
 
 ---
 
 ## ⚠️ Critical Constraints & Rules
 
-### 1. Unified Common Task Language
+### 1. Unified Common Task Language Across Languages
 
-All apps and packages implement standard scripts in their local `package.json`:
+All apps and packages implement standard scripts in their local `package.json` that hook into their respective native language toolchains:
 
-- `build`: Compiles the project artifacts to `dist/`.
-- `test`: Executes native unit tests using `node --test`.
+- `build`: Compiles the project artifacts (e.g. `tsc` for TS, `go build` for Go, `py_compile` for Python).
+- `test`: Executes unit tests (`node --test` for TS, `go test ./...` for Go, `python3 -m unittest` for Python).
 - `dev`: Runs watch/development mode.
 
 Root scripts orchestrate tasks across all tiers using Nx:
 
 ```bash
-# Build all packages & apps (respects dependency order ^build)
+# Build all packages & apps across all languages
 pnpm run build
 
-# Run tests across all workspace packages
+# Run tests across all workspace tiers (TS + Python + Go)
 pnpm test
 
 # Run dev watch mode
@@ -70,7 +73,7 @@ When instructed to open a Pull Request, use the [create-pr skill](.agents/skills
 1. **Pre-flight**: Run `pnpm run build`, `pnpm test`, `pnpm run format`, and `pnpm run check`. Ensure 0 errors.
 2. **Branch & Push**: Create a feature branch and push to remote (`git push -u origin <branch>`).
 3. **Open PR via `gh pr create`**:
-   - **Title**: Conventional Commit (e.g. `feat(api): add health check endpoint`).
+   - **Title**: Conventional Commit (e.g. `feat(gateway): add request rate limiting`).
    - **Body**: Rich Markdown format including Description, Motivation, How to Test, Testing Evidence, AI Model, and Checklist.
 
 ---
@@ -81,10 +84,10 @@ When instructed to open a Pull Request, use the [create-pr skill](.agents/skills
 # Install dependencies
 pnpm install
 
-# Build all workspace packages
+# Build all workspace packages & apps (TS + Python + Go)
 pnpm run build
 
-# Run all test suites
+# Run all test suites across all languages
 pnpm test
 
 # Format code

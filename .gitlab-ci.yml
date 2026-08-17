@@ -12,6 +12,7 @@ cache:
     - .pnpm-store
 
 before_script:
+  - apt-get update -qq && apt-get install -y -qq golang-go python3
   - corepack enable
   - corepack prepare pnpm@latest --activate
   - pnpm config set store-dir .pnpm-store
